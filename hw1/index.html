@@ -109,8 +109,7 @@
                 });
             }
             else {
-                //TODO:: REPLACE [chicagoStartups.reverse()] WITH A FUNCTION CALLED "chicagoStartupsReverse"
-                chicagoStartups.reverse().forEach( function(startup) {
+                chicagoStartupsReverse().forEach( function(startup) {
                     var childDiv = document.createElement('div');
                     var text = document.createTextNode(startup);
                     childDiv.appendChild(text);
@@ -122,28 +121,18 @@
 
     function chicagoStartupsReverse() {
         var reversedStartups = [];
-        /*
-            TODO: REVERSE THE CONTENTS OF THE ARRAY WITHOUT USING THE BUILT IN REVERSE METHOD
-                  RETURN THE REVERSED ARRAY
-
-            TIPS: 
-                1.  REVIEW JAVASCRIPT ARRAY DATA STRUCTURE AND THE BUILTIN METHODS PROVIDED TO ALL ARRAYS
-
-                2.  THIS IS A COMMON JOB INTERVIEW QUESTION, THAT SHOULD BE SOLVABLE BASED ON AN UNDERSTANDING OF
-                    DATA STRUTUCTURES REGARDLESS OF THE PROGRAMMING LANGUAGE
-        
-        */
+        for(var i = chicagoStartups.length; i--; i > 0) {
+            reversedStartups.push(chicagoStartups[i]);
+        }
         return reversedStartups;
     }
 
     function cleanAndCountCharacters() {
         console.log('CLEAN AND COUNT CHARACTERS');
-        /*
-            TODO: REMOVES ANY SPECIAL CHARACTERS FROM EACH COMPANY NAME AND
-              DISPLAYS THE NUMBER OF REMAINING CHARACTERS NEXT TO THE FULL WORD.
-              DONT FORGET TO REMOVE LEADING AND TRAILING WHITESPACES AS WELL
-        */
-
+        chicagoStartups.forEach(function(v) {
+            var replaced = v.replace(/[^a-zA-Z ]/g, "").trim();
+            console.log(replaced, replaced.length);
+        });
     }
     
     function initReverse() {
