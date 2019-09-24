@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
     <h3>Javascript Basics</h3>
-    <button onclick="cleanAndCountCharacters()">
-        clean and count words
-    </button>
+    <div id="buttonDash">
+        <button onclick="cleanAndCountCharacters()">
+            clean and count words
+        </button>
+    </div>
     <body>
     </body>
 </html>
@@ -78,8 +80,12 @@
 
     function initDocument() {
         clearDocument();
-        var rootDiv = document.createElement('div');
-        rootDiv.id = 'rootContainer';
+        // check if it exists beforehand
+        var rootDiv = document.getElementById('rootContainer');
+        if (!document.getElementById('rootContainer')) {
+            var rootDiv = document.createElement('div');
+            rootDiv.id = 'rootContainer';
+        }
         var companyNamesContainer = document.createElement('div');
         chicagoStartups.forEach( function(chicagoStartup, index) {
             var childDiv = document.createElement('div');
@@ -129,23 +135,35 @@
 
     function cleanAndCountCharacters() {
         console.log('CLEAN AND COUNT CHARACTERS');
+        var newLst = [];
         chicagoStartups.forEach(function(v) {
-            var replaced = v.replace(/[^a-zA-Z ]/g, "").trim();
-            console.log(replaced, replaced.length);
+            let replaced = v.replace(/[^a-zA-Z ]/g, "").trim();
+            newLst.push(replaced + " " + replaced.length);
+            // console.log(replaced, replaced.length);
         });
+        chicagoStartups = newLst;
+        // var reverseContainer = document.getElementById('reverseContainer');
+        if(document.getElementById('reverseContainer').length > 0) {
+            renderReversedElements();
+        }
+        clearDocument();
+        initDocument();
+        initReverse();
     }
     
     function initReverse() {
         var reverseContainer = document.createElement('div');
         reverseContainer.id = 'reverseContainer';
-        var reverseBtn = document.createElement('button');
-        var btnText = document.createTextNode('Reverse');
-        reverseBtn.onclick = renderReversedElements;
-        reverseBtn.appendChild(btnText);
-        var reverseButtonContainer = document.createElement('div');
-        reverseButtonContainer.appendChild(reverseBtn);    
-        document.getElementById('rootContainer').appendChild(reverseButtonContainer);
         document.getElementById('rootContainer').appendChild(reverseContainer);
+        // reverse btn - only create if it doesn't exist
+        if(document.getElementById("reverse-btn") == null ) {
+            var reverseBtn = document.createElement('button');
+            var btnText = document.createTextNode('Reverse');
+            reverseBtn.onclick = renderReversedElements;
+            reverseBtn.id = "reverse-btn";
+            reverseBtn.appendChild(btnText);
+            document.getElementById('buttonDash').appendChild(reverseBtn); 
+        }   
     }
 
     function toggleDisplay() {
@@ -175,7 +193,6 @@
         displayInstructions: true
     };
 
-    //TODO INVOKE THIS ANONYMOUS FUNCTION TO DISPLAY HOMEWORK INSTRUCTIONS IN THE CONSOLE
     (function() {
         if (flags.displayInstructions) {
             console.log(`
