@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700&display=swap" rel="stylesheet">
+    </head>
     <h3>Javascript Basics</h3>
     <div id="buttonDash">
         <button onclick="cleanAndCountCharacters()">
-            clean and count words
+            Clean and Count Words
         </button>
     </div>
     <body>
@@ -11,9 +14,19 @@
 </html>
 
 <style>
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
     #rootContainer {
         display: flex;
 
+    }
+    #rootContainer > div {
+        padding:10px 20px;
+        margin:10px 0px;
+        border-radius:10px;
+        display:flex;
+        flex-direction: column;
     }
     .root-container {
         position: relative;
@@ -32,7 +45,8 @@
     }
 
     .startups-container {
-        background-color: gray;
+        background-color: #e8ecf1;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.16);
     }
 
     .red {
@@ -46,9 +60,24 @@
     .gold {
         background-image: gold;
     }
+
+    .flex-column {
+        flex-direction: column;
+    }
+    .flex-row {
+        flex-direction: row;
+    }
+    #rootContainer > div.flex-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    #rootContainer > div.flex-row > div {
+        padding: 2px 10px;
+    }
 </style>
 
 <script>
+    // GITHUB URL: https://github.com/temErdenek/CSC436-Homeworks
     var colors = ['red', 'blue', 'gold'];
     var chicagoStartups = [
         '  Interior   Define  ',
@@ -85,11 +114,13 @@
         if (!document.getElementById('rootContainer')) {
             var rootDiv = document.createElement('div');
             rootDiv.id = 'rootContainer';
+            rootDiv.className = "root-container";
         }
         var companyNamesContainer = document.createElement('div');
+        companyNamesContainer.className = "startups-container";
         chicagoStartups.forEach( function(chicagoStartup, index) {
             var childDiv = document.createElement('div');
-            var text = document.createTextNode(index.toString().concat(' .) ').concat(chicagoStartup));
+            var text = document.createTextNode(index.toString().concat('. ').concat(chicagoStartup));
             childDiv.appendChild(text);
             companyNamesContainer.appendChild(childDiv);
         });
@@ -139,16 +170,19 @@
         chicagoStartups.forEach(function(v) {
             let replaced = v.replace(/[^a-zA-Z ]/g, "").trim();
             newLst.push(replaced + " " + replaced.length);
-            // console.log(replaced, replaced.length);
         });
         chicagoStartups = newLst;
-        // var reverseContainer = document.getElementById('reverseContainer');
-        if(document.getElementById('reverseContainer').length > 0) {
-            renderReversedElements();
+        var hadReverse = false;
+        if(document.getElementById('reverseContainer').children.length > 0) {
+            hadReverse = true;
         }
         clearDocument();
         initDocument();
         initReverse();
+        // handle if had reversed before cleaning
+        if (hadReverse) {
+            renderReversedElements();
+        }
     }
     
     function initReverse() {
@@ -164,23 +198,31 @@
             reverseBtn.appendChild(btnText);
             document.getElementById('buttonDash').appendChild(reverseBtn); 
         }   
+        // toggle btn
+        if(document.getElementById("toggle-btn") == null ) {
+            var toggleBtn = document.createElement("button");
+            toggleBtn.onclick = toggleDisplay;
+            toggleBtn.id = "toggle-btn";
+            toggleBtn.appendChild(document.createTextNode("Toggle Display"));
+            document.getElementById('buttonDash').appendChild(toggleBtn);
+        }
     }
 
     function toggleDisplay() {
-        /*
-        TODO: REVIEW THE CODE IN THE PROVIDED REVERSE EXAMPLE, USE JAVASCRIPT TO ADD A CLICKABLE BUTTON 
-        CALLED "Toggle Display" ... WHEN THE USER CLICKS THE BUTTON, IT RENDERS THE DISPLAY OF THE COMPANY NAMES 
-        FROM VERTICAL, TO HORIZONTAL.
-        IF THE USER CLICKS THE TOGGLE BUTTON AGAIN THE NAMES SHOULD ONCE AGAIN BE DISPLAYED VERTICALLY.
-
-        TIPS: 
-            1.  MAKE SURE TO READ AND UNDERSTAND THE DIFFERENCE BETWEEN BLOCK ELEMENTS SUCH AS A DIV, 
-                AND INLINE ELEMENTS SUCH AS A SPAN.
-
-            2.  DIVIDE AND CONQUER.
-
-            3.  
-        */
+        // Wasn't sure if you wanted to reverse the whole divs or if it were just the internals
+        // Went with both?
+        var rootContainer = document.getElementById('rootContainer');
+        if (rootContainer.classList.contains('flex-column')) {
+            rootContainer.classList.remove("flex-column");
+            rootContainer.childNodes.forEach(function(child){
+                child.classList.remove("flex-row");
+            });
+        } else {
+            rootContainer.classList.add("flex-column");
+            rootContainer.childNodes.forEach(function(child){
+                child.classList.add("flex-row");
+            });
+        }
     }
     
     function run() {
