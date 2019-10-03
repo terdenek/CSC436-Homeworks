@@ -5,5 +5,5 @@ export class Message {
     content: string;
     from: User;
     to: User;
-    createdDate: string;
+    timestamp: string;
 }
