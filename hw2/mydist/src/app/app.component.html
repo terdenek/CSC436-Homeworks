@@ -6,6 +6,12 @@
   <div class="content">
     <app-my-image></app-my-image>
     <app-my-button></app-my-button>
+    <div class="message-wrapper">
+        <div *ngFor="let message of messages" [ngClass]="(message.from.name == 'Bob') ? 'left-message' : 'right-message'">
+            <span class="from"> {{message.from.name}} </span>
+            <span class="content">{{message.content}}</span>
+          </div>
+    </div>
   </div>
 </div>
 <router-outlet></router-outlet>

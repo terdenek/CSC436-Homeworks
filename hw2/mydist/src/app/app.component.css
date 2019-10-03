@@ -1,0 +1,37 @@
+* {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.left-message {
+    text-align: left;
+}
+.right-message {
+    text-align: right;
+}
+.message-wrapper {
+    width:320px;
+    margin:auto;
+    display:block;
+    padding:10px;
+    background-color: rgba(0,0,0,0.05);
+    margin-top:20px;
+}
+.message-wrapper > div {
+    padding: 5px 0px;
+    margin:5px 0px;
+}
+.message-wrapper > div > span.content {
+    border-radius:8px;
+    padding:0px 4px;
+}
+span.from {
+    color:#ccc;
+    font-size:12px;
+    display:block;
+}
+
+.left-message span.content {
+    background-color:rgba(0,0,0,0.16);
+}
+.right-message span.content {
+    background-color: #F4C2c2;
+}

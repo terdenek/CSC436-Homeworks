@@ -5,4 +5,9 @@ export class User {
     createdDate: string;
     isDeleted: boolean;
     messages: Messages;
+
+    constructor(name: string) {
+        this.name = name;
+        this.createdDate = Date.now().toString();
+    }
 }
