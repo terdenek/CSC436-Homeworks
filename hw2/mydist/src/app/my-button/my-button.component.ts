@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-my-button',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyButtonComponent implements OnInit {
 
-  constructor() { }
+  isImageLiked: Boolean = false;
+  statuses: [String] = [""];
+
+  constructor(private myService: MyServiceService) { }
+
+  buttonClick() {
+    this.isImageLiked = this.myService.likeImage(this.isImageLiked);
+    this.statuses.push("Image is liked == " + this.isImageLiked);
+  }
 
   ngOnInit() {
   }

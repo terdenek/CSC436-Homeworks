@@ -1,1 +1,2 @@
-<button> Like </button>
+<button (click)="buttonClick()" [ngClass]="isImageLiked ? 'is-liked' : ''" > Like </button>
+<span class="status-span" *ngFor='let status of statuses'>{{status}}</span>

@@ -1,3 +1,16 @@
 .is-liked {
     background-color: green;
+    color:#FFF;
+}
+button {
+    border:none;
+    border-radius:10px;
+    font-size:24px;
+    width:320px;
+    display:block;
+    margin:auto;
+    margin-top:10px;
+}
+.status-span {
+    display:block;
 }
