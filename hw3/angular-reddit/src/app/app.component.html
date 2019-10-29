@@ -1,0 +1,26 @@
+<form class="ui large form segment">
+  <h3 class="ui header">Create a post</h3>
+
+  <div class="field">
+    <label for="title">Title:</label>
+    <input name="title" id="title" #newtitle>  <!-- changed -->
+  </div>
+  <div class="field">
+    <label for="link">Url:</label>
+    <input name="link" id="link" #newlink> <!-- changed -->
+  </div>
+
+  <!-- added this button -->
+  <button (click)="addArticle(newtitle, newlink)"
+          class="ui positive right floated button">
+    Postç
+  </button>
+
+</form>
+
+<div class="ui grid posts">
+  <app-article
+    *ngFor="let article of sortedArticles()"
+    [article]="article">
+  </app-article>
+</div>

@@ -1,0 +1,13 @@
+
+Temuulen Erdenekhuu
+
+As a user, I want to flag problematic posts, so that I can indicate there's an issue with the post.
+As an administrator, I want to be able to add comments to violations, so that I can describe what the violation is to the user.
+As a user, I want posts that have gotten flagged to have a reduced score, so that users can police the quality of posts without adminstrators.
+As an administrator, I want to be able to remove posts, so that I can oversee and manage the content that is posted.
+As an administrator, I want users that have not corrected their violation to be suspended for 1 week, so that toxic users are removed.
+As an administrator, I want problematic posts to be automatically removed if the user does not address the changes within x time period, so that problematic posts can be cleaned up automatically.
+
+Bonus Stories:
+As an administrator, I want to only be notified of posts that have more than x number of flags, so that I do not get constant notifications.
+As a user, I want to be notified if my post gets flagged, so that I can resolve the issue and maintain my forum membership.
