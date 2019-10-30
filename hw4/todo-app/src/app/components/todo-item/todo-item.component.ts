@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task, TaskDueDate } from 'src/app/task';
 
 @Component({
@@ -8,7 +8,8 @@ import { Task, TaskDueDate } from 'src/app/task';
 })
 export class TodoItemComponent implements OnInit {
   @Input() task: Task;
-  
+  @Output() updateEvent = new EventEmitter<Task>();
+
   dueDateTypes: TaskDueDate[] = [
     TaskDueDate.days,
     TaskDueDate.week,
@@ -20,7 +21,8 @@ export class TodoItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  changeDueDate(dueDate: TaskDueDate): void {
+  changeDueDate(dueDate) {
     this.task.dueDate = dueDate;
+    this.updateEvent.next(this.task);
   }
 }

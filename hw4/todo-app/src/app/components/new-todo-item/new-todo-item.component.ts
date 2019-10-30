@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from 'src/app/task';
+import { Task, TaskDueDate } from 'src/app/task';
+import { TodoService } from 'src/app/todo.service';
 
 @Component({
   selector: 'app-new-todo-item',
@@ -9,9 +10,16 @@ import { Task } from 'src/app/task';
 export class NewTodoItemComponent implements OnInit {
   task: Task = new Task();
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit() {
   }
 
+  addTask(text: String) {
+    this.todoService.addTask({
+      id: 0,
+      name: text,
+      dueDate: TaskDueDate.days
+    });
+  }
 }
