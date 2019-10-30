@@ -7,11 +7,12 @@ import { Task, TaskDueDate } from 'src/app/task';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit {
-  task: Task = {
-    id: 1,
-    name: "Test",
-    dueDate: TaskDueDate.urgent
-  };
+
+  tasks: Task[] = [
+    { id: 1, name: "Clean up 1", dueDate: TaskDueDate.days },
+    { id: 2, name: "Clean up 2", dueDate: TaskDueDate.days },
+    { id: 3, name: "Clean up 3", dueDate: TaskDueDate.days }
+  ];
 
   constructor() { }
 

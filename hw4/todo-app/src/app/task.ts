@@ -5,7 +5,7 @@ export class Task {
 }
 
 export enum TaskDueDate {
-    urgent = "Urgent",
-    days = "Days",
-    Week = "Week"
+    urgent,
+    days,
+    week
 }

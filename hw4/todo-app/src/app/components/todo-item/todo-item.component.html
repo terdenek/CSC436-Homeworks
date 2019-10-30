@@ -1,1 +1,8 @@
-<p>todo-item works!</p>
+<div class="todo-item" *ngIf="task">
+    <p> Task #{{task.id}} - {{task.name}} </p>
+    <button *ngFor='let btn of dueDateTypes' 
+        [ngClass]="{'active': (btn == task.dueDate)}" 
+        (click)="changeDueDate(btn)">
+        {{btn}}
+    </button>
+</div>
