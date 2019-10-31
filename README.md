@@ -8,3 +8,7 @@ Since, this was a pretty minor project I opted to just make changes on the maste
 - HW2 - Completed 10/02
 Completed the mydist project and put under the hw2 folder. 
 
+- HW3
+
+- HW4 - Completed 10/30
+Simple Angular Todo App with add/delete functionality
