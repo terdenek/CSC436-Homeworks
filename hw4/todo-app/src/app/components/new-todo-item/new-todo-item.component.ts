@@ -16,6 +16,7 @@ export class NewTodoItemComponent implements OnInit {
   }
 
   addTask(text: String) {
+    // could have pulled straight from this.task as well
     this.todoService.addTask({
       id: 0,
       name: text,
