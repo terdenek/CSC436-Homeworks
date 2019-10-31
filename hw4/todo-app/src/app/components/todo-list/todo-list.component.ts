@@ -21,13 +21,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getTasks() {
+    console.log("getTasks");
     this.tasks = this.todoService.getTasks();
-  }
-  
-  updateTask(task: Task) {
-    console.log(task);
-    console.log(this.todoService);
-    this.todoService.updateTaskDueDate(task);
-    this.getTasks();
   }
 }

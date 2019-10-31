@@ -8,3 +8,6 @@ body {
 a {
     color:#FFF;
 }
+button {
+    cursor: pointer;
+}

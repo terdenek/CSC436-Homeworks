@@ -30,6 +30,7 @@ export class TodoService {
   }
 
   removeTask(task: Task) {
+    console.log("removeTask");
     this.tasks = this.tasks.filter(t => t.id != task.id);
   }
 

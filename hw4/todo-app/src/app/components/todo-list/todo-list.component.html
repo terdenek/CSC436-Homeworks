@@ -1,5 +1,5 @@
 <ul>
     <li *ngFor='let task of tasks'>
-        <app-todo-item [task]="task" (updateEvent)="updateTask"></app-todo-item>
+        <app-todo-item [task]="task" (updateEvent)="getTasks()"></app-todo-item>
     </li>
 </ul>

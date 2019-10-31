@@ -16,11 +16,17 @@ export class NewTodoItemComponent implements OnInit {
   }
 
   addTask(text: String) {
-    // could have pulled straight from this.task as well
-    this.todoService.addTask({
-      id: 0,
-      name: text,
-      dueDate: TaskDueDate.days
-    });
+    if(text) {
+      // could have pulled straight from this.task as well
+      this.todoService.addTask({
+        id: 0,
+        name: text,
+        dueDate: TaskDueDate.days
+      });
+      // clear out
+      this.task = new Task();
+    } else {
+      alert("You need to write something!");
+    }
   }
 }
