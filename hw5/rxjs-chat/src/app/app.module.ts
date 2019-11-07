@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { UsersService } from './user/users.service';
 import { ThreadsService } from './thread/threads.service';
 import { MessagesService } from './message/messages.service';
+import { AuthGuardService } from './auth-guard.service';
 
 import { AppComponent } from './app.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
@@ -15,6 +16,9 @@ import { ChatThreadsComponent } from './chat-threads/chat-threads.component';
 import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { ChatPageComponent } from './chat-page/chat-page.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { AppRoutingModule } from './app-routing.module';
+
 
 @NgModule({
   declarations: [
@@ -25,15 +29,17 @@ import { FromNowPipe } from './pipes/from-now.pipe';
     ChatThreadsComponent,
     ChatWindowComponent,
     ChatPageComponent,
-    FromNowPipe
+    FromNowPipe,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService
+    MessagesService, ThreadsService, UsersService, AuthGuardService
   ],
 
   bootstrap: [AppComponent]
