@@ -1,0 +1,8 @@
+.chat-window-container.minimized .panel-body, .chat-window-container.minimized .panel-footer {
+    display: none;
+}
+button.minimize-btn {
+    background: none;
+    border: none;
+    width:100%;
+}

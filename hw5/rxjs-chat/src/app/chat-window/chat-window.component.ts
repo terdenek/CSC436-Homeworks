@@ -25,6 +25,7 @@ export class ChatWindowComponent implements OnInit {
   currentThread: Thread;
   draftMessage: Message;
   currentUser: User;
+  isWindowActive: boolean;
 
   constructor(public messagesService: MessagesService,
               public threadsService: ThreadsService,
@@ -75,5 +76,9 @@ export class ChatWindowComponent implements OnInit {
     const scrollPane: any = this.el
       .nativeElement.querySelector('.msg-container-base');
     scrollPane.scrollTop = scrollPane.scrollHeight;
+  }
+
+  toggleChatWindow() {
+    this.isWindowActive = !this.isWindowActive;
   }
 }

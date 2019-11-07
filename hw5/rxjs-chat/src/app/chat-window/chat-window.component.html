@@ -1,4 +1,4 @@
-<div class="chat-window-container">
+<div class="chat-window-container" [ngClass]="{'minimized': !isWindowActive}" >
   <div class="chat-window">
     <div class="panel-container">
       <div class="panel panel-default">
@@ -12,6 +12,9 @@
           </div>
           <div class="panel-buttons-container">
             <!-- you could put minimize or close buttons here -->
+            <button class='minimize-btn' (click)="toggleChatWindow()">
+                <span class="glyphicon" [ngClass]="{'glyphicon-chevron-down': isWindowActive, 'glyphicon-chevron-up' : !isWindowActive}"></span>
+            </button>
           </div>
         </div>
 
