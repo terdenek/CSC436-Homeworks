@@ -12,3 +12,6 @@ Completed the mydist project and put under the hw2 folder.
 
 - HW4 - Completed 10/30
 Simple Angular Todo App with add/delete functionality
+
+- HW5 - Completed 11/06
+Chat App + Firebase Auth with Login and AuthGuard
