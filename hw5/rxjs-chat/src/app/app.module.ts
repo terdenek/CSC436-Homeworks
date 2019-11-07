@@ -18,7 +18,16 @@ import { ChatPageComponent } from './chat-page/chat-page.component';
 import { FromNowPipe } from './pipes/from-now.pipe';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from '../environments/environment';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from './auth.service';
+
+import * as firebase from 'firebase';
+
+firebase.initializeApp(environment.firebase);
 
 @NgModule({
   declarations: [
@@ -36,10 +45,13 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule,
+    AngularFirestoreModule,
+    AngularFireAuthModule,
   ],
   providers: [
-    MessagesService, ThreadsService, UsersService, AuthGuardService
+    MessagesService, ThreadsService, UsersService, AuthGuardService, AuthService
   ],
 
   bootstrap: [AppComponent]
